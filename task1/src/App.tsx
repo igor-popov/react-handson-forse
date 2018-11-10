@@ -7,6 +7,13 @@ import ProductPage from './components/product/productPage';
 
 class App extends React.Component {
   public render() {
+
+    /*
+      1. ProductsPage
+      2. ProductListItem
+      3. ProductPage
+    */
+
     return (
       <div className='App'>
         <Router>

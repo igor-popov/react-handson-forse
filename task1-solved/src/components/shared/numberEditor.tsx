@@ -53,7 +53,7 @@ export class NumberEditor extends React.Component<INumberEditorProps, INumberEdi
         if (this.props.className) {
             classNames = 'form-control ' + this.props.className;
         } else {
-            classNames = 'form-control eco-number-editor';
+            classNames = 'form-control number-editor';
         }
 
         const valueEditor = (this.props.isReadonly ?

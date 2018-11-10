@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { productApi } from '../../api/productApi';
 import { IProductName } from '../../domain/product';
-import ProductListItem from './productListItem';
+// import ProductListItem from './productListItem';
 import './productsPage.css';
 
 interface IProductsPageState {
@@ -22,10 +22,11 @@ class ProductsPage extends React.Component<{}, IProductsPageState> {
     }
 
     public render(): React.ReactNode {
+      /* legg til produkt navn rendering (bruk gjerne ProductListItem)*/
+
       return (
         <div className='product-page'>
           <h1>Produkter</h1>
-          {this.state.products.map(p => this.renderProduct(p))}
         </div>
       );
     }
@@ -33,12 +34,6 @@ class ProductsPage extends React.Component<{}, IProductsPageState> {
     private async loadData() {
       const products = await productApi.getProducts();
       this.setState({ products });
-    }
-
-    private renderProduct(product: IProductName) {
-      return (
-        <ProductListItem product={product}/>
-      );
     }
 }
 
