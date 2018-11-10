@@ -2,6 +2,7 @@ import * as React from 'react';
 import { productApi } from '../../api/productApi';
 import { IProductName } from '../../domain/product';
 import ProductListItem from './productListItem';
+import './productsPage.css';
 
 interface IProductsPageState {
   products: IProductName[];
@@ -16,16 +17,27 @@ class ProductsPage extends React.Component<{}, IProductsPageState> {
 
     public async componentWillMount() {
       if (!this.state.products.length) {
-        //initialize products from api productApi.getProducts();
+        this.loadData();
       }
     }
 
     public render(): React.ReactNode {
       return (
-        <div>
+        <div className='product-page'>
           <h1>Produkter</h1>
-          {/*render products*/}
+          {this.state.products.map(p => this.renderProduct(p))}
         </div>
+      );
+    }
+
+    private async loadData() {
+      const products = await productApi.getProducts();
+      this.setState({ products });
+    }
+
+    private renderProduct(product: IProductName) {
+      return (
+        <ProductListItem product={product}/>
       );
     }
 }
