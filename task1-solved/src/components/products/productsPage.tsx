@@ -17,10 +17,14 @@ class ProductsPage extends React.Component<{}, IProductsPageState> {
 
     public async componentWillMount() {
       if (!this.state.products.length) {
-        const products = await productApi.getProducts();
-        this.setState({ products });
+        this.loadData();
       }
     }
+
+    private async loadData() {
+      const products = await productApi.getProducts();
+      this.setState({ products });
+  }
 
     public render(): React.ReactNode {
       return (
