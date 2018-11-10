@@ -1,16 +1,16 @@
 import * as React from 'react';
 
-interface TextEditorProps {
+interface ITextEditorProps {
     value: string;
     placeholder?: string;
     onChange: (change: any) => void;
     focus?: boolean;
 }
 
-export class TextEditor extends React.Component<TextEditorProps, {}> {
+export class TextEditor extends React.Component<ITextEditorProps, {}> {
     private changeHandlerMethod: (change: any) => void = this.handleChange.bind(this);
 
-    render() {
+    public render() {
         return (
             <input
                 type='text'

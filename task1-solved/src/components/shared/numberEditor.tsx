@@ -44,7 +44,7 @@ export class NumberEditor extends React.Component<INumberEditorProps, INumberEdi
         this.valuePattern = this.getValuePattern(nextPrecision);
     }
 
-    render() {
+    public render() {
 
         const valueAsText = this.state.value;
 

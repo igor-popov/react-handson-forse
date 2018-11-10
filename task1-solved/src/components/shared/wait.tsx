@@ -1,15 +1,12 @@
 import * as React from 'react';
 
-interface WaitProps {
+interface IWaitProps {
   text: string;
 }
 
-interface WaitState {
-}
+export class Wait extends React.Component<IWaitProps, {}> {
 
-export class Wait extends React.Component<WaitProps, WaitState> {
-
-    render(): React.ReactNode {
+    public render(): React.ReactNode {
       return (
         <div>
           {this.props.text}...
