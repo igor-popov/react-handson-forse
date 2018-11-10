@@ -48,12 +48,12 @@ export class NumberEditor extends React.Component<INumberEditorProps, INumberEdi
 
         const valueAsText = this.state.value;
 
-        let classNames = 'form-control eco-number-editor-base ';
+        let classNames: string;
 
         if (this.props.className) {
-            classNames = ' ' + this.props.className;
+            classNames = 'form-control ' + this.props.className;
         } else {
-            classNames = ' eco-number-editor';
+            classNames = 'form-control eco-number-editor';
         }
 
         const valueEditor = (this.props.isReadonly ?
@@ -113,7 +113,7 @@ export class NumberEditor extends React.Component<INumberEditorProps, INumberEdi
     }
 
     private appendUnits(valueEditor: any) {
-        return (<div>{valueEditor}{this.props.units}</div>);
+        return (<div>{valueEditor}{' ' + this.props.units}</div>);
     }
 
     private handleChange(event: any) {

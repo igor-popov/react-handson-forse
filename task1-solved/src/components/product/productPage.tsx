@@ -7,9 +7,13 @@ import { NumberEditor } from '..//shared/numberEditor';
 import { TextEditor } from '../shared/textEditor';
 import { Property } from '../shared/property';
 import { SaveButton } from '../shared/saveButton';
+import { BackButton } from '../shared/backButton';
+
+import './productPage.css';
 
 interface IProductPageProps {
     match: any;
+    history: any;
 }
 
 interface IProductPageState {
@@ -41,11 +45,6 @@ class ProductPage extends React.Component<IProductPageProps, IProductPageState> 
         }
     }
 
-    private async loadData(productId: string) {
-        const product: IProduct = await productApi.getProduct(productId);
-        this.setState({ product: product, isSaved: false });
-    }
-
     public render(): React.ReactNode {
 
       if (!this.state.product) {
@@ -58,6 +57,7 @@ class ProductPage extends React.Component<IProductPageProps, IProductPageState> 
 
       return (
         <div>
+          <BackButton history={this.props.history}/>
           <h1>{product.name}</h1>
           {this.state.isSaved ? <p>Saved!</p> : undefined}
           <Property text='Navn'>
@@ -81,6 +81,11 @@ class ProductPage extends React.Component<IProductPageProps, IProductPageState> 
       );
     }
 
+    private async loadData(productId: string) {
+        const product: IProduct = await productApi.getProduct(productId);
+        this.setState({ product, isSaved: false });
+    }
+
     private onChange(property: string, change: any) {
       if (this.state.product) {
         const newState = {
@@ -99,11 +104,11 @@ class ProductPage extends React.Component<IProductPageProps, IProductPageState> 
 
       const product = this.state.product;
       await productApi.upsertProduct(product);
-      this.setState({ product: product, isSaved: true });
+      this.setState({ product, isSaved: true });
 
       window.setInterval(
         () => {
-            this.setState({ product: product, isSaved: false });
+            this.setState({ product, isSaved: false });
         },
         2000);
 
