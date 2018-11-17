@@ -15,8 +15,8 @@ export default function products(state: IProductsState = {}, action: any): IProd
       newState = Object.assign({}, state, {errorMessage: action.message});
       return newState;
     case constants.SINGLE_PRODUCT_UPDATED:
-        let updatedProduct: IProduct = Object.assign({}, action.product);
-        let newProducts: IProduct[] = state.all
+        const updatedProduct: IProduct = Object.assign({}, action.product);
+        const newProducts: IProduct[] = state.all
           ? state.all.map(p => p.id === updatedProduct.id ? updatedProduct : p)
           : [];
         newState = Object.assign({}, state, {all: newProducts});

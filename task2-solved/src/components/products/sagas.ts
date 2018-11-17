@@ -11,7 +11,7 @@ function requestProductsFromApi(): Promise<IProduct[]> {
 function* loadAllProducts() {
   try {
     const products: IProduct[] = yield call(requestProductsFromApi);
-    yield put({type: constants.ALL_PRODUCTS_REQUEST_SUCCEEDED, products: products});
+    yield put({type: constants.ALL_PRODUCTS_REQUEST_SUCCEEDED, products});
   } catch (e) {
     yield put({type: constants.ALL_PRODUCTS_REQUEST_FAILED, message: e.message});
   }

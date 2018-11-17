@@ -7,7 +7,7 @@ import { IAppState } from '../domain/state';
 
 export default function configureStore(initialState: IAppState): Store<IAppState> {
   const sagaMiddleware = createSagaMiddleware<IAppState>();
-  const composeEnhancers = (<any> window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const store: Store<IAppState> =
     createStore<IAppState, any, any, any>(

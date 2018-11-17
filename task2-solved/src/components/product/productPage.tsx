@@ -56,8 +56,8 @@ class ProductPage extends React.Component<IProductPageProps, IProductPageState> 
     }
 
     public componentWillReceiveProps(props: IProductPageProps) {
-      let editableProductId = !this.state.editableProduct ? undefined : this.state.editableProduct.id;
-      let originalProductId = !props.product ? undefined : props.product.id;
+      const editableProductId = !this.state.editableProduct ? undefined : this.state.editableProduct.id;
+      const originalProductId = !props.product ? undefined : props.product.id;
 
       if (!originalProductId) {
         return;
@@ -138,18 +138,18 @@ class ProductPage extends React.Component<IProductPageProps, IProductPageState> 
 
 
 function mapStateToProps(state: IAppState) {
-  let product: IProduct = state.product.current || {id: '', name: '', weight: 1} as IProduct;
+  const product: IProduct = state.product.current || {id: '', name: '', weight: 1} as IProduct;
 
   return {
-    product: product,
+    product,
     isJustSaved: !!state.product.isJustSaved
   };
 }
 
-function mapDispatchToProps(dispatch: Function) {
+function mapDispatchToProps(dispatch: (action: any) => void) {
   return {
-    loadProduct: (productId: string) => dispatch({type: constants.PRODUCT_REQUEST_START, productId: productId}),
-    saveProduct: (product: IProduct) => dispatch({type: constants.PRODUCT_SAVE_START, product: product}),
+    loadProduct: (productId: string) => dispatch({type: constants.PRODUCT_REQUEST_START, productId}),
+    saveProduct: (product: IProduct) => dispatch({type: constants.PRODUCT_SAVE_START, product}),
   };
 }
 

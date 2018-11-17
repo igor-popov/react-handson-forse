@@ -54,7 +54,7 @@ function mapStateToProps(state: IAppState) {
   };
 }
 
-function mapDispatchToProps(dispatch: Function) {
+function mapDispatchToProps(dispatch: (action: any) => void) {
   return {
     loadProducts: () => dispatch({type: constants.ALL_PRODUCTS_REQUEST_START})
   };
