@@ -49,14 +49,16 @@ class ProductsPage extends React.Component<IProductsPageProperties, {}> {
 }
 
 function mapStateToProps(state: IAppState) {
+  // hent produkter fra state 
   return {
      products: []
   };
 }
 
 function mapDispatchToProps(dispatch: (action: any) => void) {
+  // bruk dispatch til å sende action om at produkter må lastes ned
   return {
-    loadProducts: () => void 0 //dispatch({type: })
+    loadProducts: () => void 0 // dispatch({type: })
   };
 }
 

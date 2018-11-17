@@ -11,6 +11,11 @@ function requestProductsFromApi(): Promise<IProduct[]> {
 */
 
 function* loadAllProducts() {
+  /*
+   1. henting av data fra requestProductsFromApi
+   2. håndtering av nedlastning exception
+  */
+
   try {
     // constants.ALL_PRODUCTS_REQUEST_SUCCEEDED
   } catch (e) {
