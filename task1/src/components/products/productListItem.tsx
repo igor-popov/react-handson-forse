@@ -15,7 +15,9 @@ class ProductsListItem extends React.Component<IProductsListItemProps, {}> {
       2. legg til Link til produkt side 
       */
 
-      return (<div/>);
+      return (<div>
+        Placeholder
+      </div>);
     }
 }
 
